@@ -1,3 +1,10 @@
+<?php
+    include_once("util/connect.php");
+
+    if (isset($_POST["submit"])) {
+        
+    }
+?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
@@ -17,7 +24,7 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <!-- form start -->
-                <form role="form">
+                <form role="form" action="index.php?page=cadastro_paciente" method="post">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="nome">Nome Completo</label>
@@ -81,7 +88,7 @@
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button name="submit" id="submit" type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>
