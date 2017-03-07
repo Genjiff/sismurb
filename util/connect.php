@@ -1,6 +1,9 @@
 <?php
     include_once("instance/config.php");
 
-    $connect = mysql_connect($host, $user, $password) or print(mysql_error());
-    mysql_select_db("sismurb", $connect) or print(mysql_error());
+    $conn = new mysqli($host, $user, $password, "sismurb");
+    // Check connection
+    if ($conn->connect_error) {
+        die("Falha de conexão: " . $conn->connect_error);
+    }
 ?>

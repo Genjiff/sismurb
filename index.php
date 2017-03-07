@@ -1,9 +1,21 @@
+<?php
+$page = "";
+
+if(!isset($_GET["page"]) || $_GET["page"] == ""){
+    $page = "home";
+} else if ($_GET["page"] == "pacientes") {
+    $page = "pacientes";
+} else if ($_GET["page"] == "cadastro_paciente"){
+    $page = "cadastro_paciente";
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sismurb | Dashboard</title>
+  <title>Sismurb</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -46,7 +58,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index.html" class="logo">
+    <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -78,10 +90,10 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MENU PRINCIPAL</li>
-        <li class="active">
-          <a href="index.html"><i class="fa fa-hospital-o"></i> Dashboard</a>
+        <li <?php if ($page == "home") { ?> class="active" <?php } ?> >
+          <a href="index.php"><i class="fa fa-hospital-o"></i> Dashboard</a>
         </li>
-        <li class="treeview">
+        <li class="treeview <?php if ($page == "cadastro_paciente") { ?>active<?php } ?>">
           <a href="#">
             <i class="fa fa-heartbeat"></i> <span>Pacientes</span>
             <span class="pull-right-container">
@@ -90,7 +102,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="index.php?page=pacientes"><i class="fa fa-circle-o"></i> Todos os pacientes</a></li>
-            <li><a href="index.php?page=cadastro_paciente"><i class="fa fa-circle-o"></i> Cadastro de paciente</a></li>
+            <li <?php if ($page == "cadastro_paciente") { ?> class="active" <?php } ?> ><a href="index.php?page=cadastro_paciente"><i class="fa fa-circle-o"></i> Cadastro de paciente</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -119,15 +131,9 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <?php
-    if(!isset($_GET["page"]) || $_GET["page"] == ""){
-        include_once("home.php");
-    } else if ($_GET["page"] == "pacientes") {
-        include_once("pacientes.php");
-    } else if ($_GET["page"] == "cadastro_paciente"){
-        include_once("cadastro_paciente.php");
-    }
-    ?>
+      <?php
+          include_once("$page.php");
+      ?>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

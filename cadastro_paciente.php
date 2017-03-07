@@ -1,18 +1,56 @@
 <?php
-    include_once("util/connect.php");
+    $empty_fields = array ();
 
     if (isset($_POST["submit"])) {
-        
+        include_once("util/connect.php");
+
+        foreach ($_POST as $key => $value) {
+            if ($value == "") {
+                $empty_fields[] = $key;
+            }
+        }
+
+        if (empty($empty_fields)) {
+            $nome = $_POST["nome"];
+            $sexo = $_POST["sexo"];
+            $rg= $_POST["rg"];
+            $cpf = $_POST["cpf"];
+            $data_nasc = date_format(date_create_from_format('d/m/Y', $_POST["datadenascimento"]), 'Y-m-d');
+            $endereco= $_POST["endereco"];
+            $telefone = $_POST["telefone"];
+            $email = $_POST["email"];
+            $estado_civil = $_POST["estadocivil"];
+            $nome_da_mae = $_POST["nomedamae"];
+            $tipo = $_POST["tipo"];
+
+            $stmt = $conn->prepare("INSERT INTO paciente (
+                nome,
+                rg,
+                cpf,
+                data_nasc,
+                endereco,
+                telefone,
+                email,
+                sexo,
+                estado_civil,
+                nome_da_mae,
+                tipo)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("siissssssss", $nome, $rg, $cpf, $data_nasc, $endereco, $telefone, $email, $sexo, $estado_civil, $nome_da_mae, $tipo);
+            $stmt->execute();
+        }
+
+        $empty_fields = json_encode($empty_fields, JSON_FORCE_OBJECT);
     }
 ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Cadastro de Pacientes
+    Cadastro de Paciente
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Cadastro de Pacientes</li>
+    <li class="active">Cadastro de Paciente</li>
   </ol>
 </section>
 
@@ -69,12 +107,12 @@
                         <div class="form-group">
                           <label>Estado Civil</label>
                           <select name="estadocivil" id="estadocivil" class="form-control select2" style="width: 100%;">
-                            <option selected="selected">Solteiro (a)</option>
-                            <option>Casado (a)</option>
+                            <option selected="selected">Solteiro</option>
+                            <option>Casado</option>
                           </select>
                         </div>
                         <div class="form-group">
-                            <label for="endereco">Nome da mãe</label>
+                            <label for="nomedamae">Nome da mãe</label>
                             <input type="text" class="form-control" name="nomedamae" id="nomedamae" placeholder="Digite o nome da mãe do paciente"/>
                         </div>
                         <div class="form-group">
@@ -94,6 +132,6 @@
             </div>
         </div>
     </div>
-        <!-- /.box -->
+    <!-- /.box -->
 </section>
 <!-- /.content -->

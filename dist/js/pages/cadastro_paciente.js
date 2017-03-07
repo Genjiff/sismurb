@@ -1,4 +1,10 @@
 $(function () {
+    var empty_fields = <?php echo $empty_fields; ?>;
+
+    for (var i in empty_fields) {
+        $("#" + empty_fields[i]).parent().addClass("has-error");
+    };
+
     //Initialize Select2 Elements
     $(".select2").select2();
 
