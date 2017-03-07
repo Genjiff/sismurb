@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Smurb | Dashboard</title>
+  <title>Sismurb | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -27,6 +27,10 @@
   <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="plugins/select2/select2.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
@@ -46,7 +50,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>S</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Smurb</b></span>
+      <span class="logo-lg"><b>Sismurb</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -66,7 +70,7 @@
           <img src="dist/img/avatar.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Smurb Admin</p>
+          <p>Sismurb Admin</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -75,18 +79,18 @@
       <ul class="sidebar-menu">
         <li class="header">MENU PRINCIPAL</li>
         <li class="active">
-          <a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
+          <a href="index.html"><i class="fa fa-hospital-o"></i> Dashboard</a>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Tables</span>
+            <i class="fa fa-heartbeat"></i> <span>Pacientes</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+            <li><a href="index.php?page=pacientes"><i class="fa fa-circle-o"></i> Todos os pacientes</a></li>
+            <li><a href="index.php?page=cadastro_paciente"><i class="fa fa-circle-o"></i> Cadastro de paciente</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -118,14 +122,16 @@
     <?php
     if(!isset($_GET["page"]) || $_GET["page"] == ""){
         include_once("home.php");
-    } else if ($_GET["page"] == "prontuarios") {
-        include_once("prontuarios.php");
+    } else if ($_GET["page"] == "pacientes") {
+        include_once("pacientes.php");
+    } else if ($_GET["page"] == "cadastro_paciente"){
+        include_once("cadastro_paciente.php");
     }
     ?>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Smurb</strong>
+    <strong>Sismurb</strong>
   </footer>
 </div>
 <!-- ./wrapper -->
@@ -154,6 +160,12 @@
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- InputMask -->
+<script src="plugins/input-mask/jquery.inputmask.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- Select2 -->
+<script src="plugins/select2/select2.full.min.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
@@ -164,5 +176,12 @@
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script>
+<?php
+if(isset($_GET["page"]) && $_GET["page"] == "cadastro_paciente"){
+    include_once("dist/js/pages/cadastro_paciente.js");
+}
+?>
+</script>
 </body>
 </html>
