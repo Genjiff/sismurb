@@ -18,6 +18,7 @@ if(!isset($_GET["page"]) || $_GET["page"] == ""){
   <title>Sismurb</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="icon" href="dist/img/boxed-bg.png">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->

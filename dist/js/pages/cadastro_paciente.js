@@ -1,9 +1,21 @@
 $(function () {
-    var empty_fields = <?php echo $empty_fields; ?>;
+    var error_fields = <?php echo $error_fields; ?>;
+    var error_msg = "<?php echo $error_msg; ?>";
+    var success = <?php echo $success; ?>;
 
-    for (var i in empty_fields) {
-        $("#" + empty_fields[i]).parent().addClass("has-error");
+    for (var i in error_fields) {
+        $("#" + error_fields[i]).parent().addClass("has-error");
     };
+
+    if (error_msg != "") {
+        alert = document.getElementById("msg_error");
+        alert.innerHTML = ( error_msg );
+        $("#erro").modal("show");
+    }
+
+    if (success) {
+        $("#sucesso").modal("show");
+    }
 
     //Initialize Select2 Elements
     $(".select2").select2();
