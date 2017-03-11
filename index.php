@@ -7,6 +7,8 @@ if(!isset($_GET["page"]) || $_GET["page"] == ""){
     $page = "pacientes";
 } else if ($_GET["page"] == "cadastro_paciente"){
     $page = "cadastro_paciente";
+} else if ($_GET["page"] == "ver_paciente"){
+    $page = "ver_paciente";
 }
 ?>
 
@@ -42,6 +44,8 @@ if(!isset($_GET["page"]) || $_GET["page"] == ""){
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="plugins/select2/select2.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- bootstrap wysihtml5 - text editor -->
@@ -177,6 +181,9 @@ if(!isset($_GET["page"]) || $_GET["page"] == ""){
 <script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
 <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- Datatables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -185,9 +192,7 @@ if(!isset($_GET["page"]) || $_GET["page"] == ""){
 <script src="dist/js/demo.js"></script>
 <script>
 <?php
-if(isset($_GET["page"]) && $_GET["page"] == "cadastro_paciente"){
-    include_once("dist/js/pages/cadastro_paciente.js");
-}
+    include_once("dist/js/pages/$page.js");
 ?>
 </script>
 </body>
