@@ -19,7 +19,7 @@
       <li <?php if ($page == "home") { ?> class="active" <?php } ?> >
         <a href="index.php"><i class="fa fa-hospital-o"></i> Dashboard</a>
       </li>
-      <li class="treeview <?php if ($page == "cadastro_paciente" || $page == "pacientes") { ?>active<?php } ?>">
+      <li class="treeview <?php if ($page == "cadastro_paciente" || $page == "pacientes" || $page == "editar_paciente" || $page == "ver_paciente" ) { ?>active<?php } ?>">
         <a href="#">
           <i class="fa fa-heartbeat"></i> <span>Pacientes</span>
           <span class="pull-right-container">
@@ -29,6 +29,18 @@
         <ul class="treeview-menu">
           <li <?php if ($page == "pacientes") { ?> class="active" <?php } ?> ><a href="index.php?page=pacientes"><i class="fa fa-circle-o"></i> Todos os pacientes</a></li>
           <li <?php if ($page == "cadastro_paciente") { ?> class="active" <?php } ?> ><a href="index.php?page=cadastro_paciente"><i class="fa fa-circle-o"></i> Cadastro de paciente</a></li>
+        </ul>
+      </li>
+      <li class="treeview <?php if ($page == "cadastro_medico" || $page == "medicos" || $page == "editar_medico" || $page == "ver_medico") { ?>active<?php } ?>">
+        <a href="#">
+          <i class="fa fa-user-md"></i> <span>Médicos</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li <?php if ($page == "medicos") { ?> class="active" <?php } ?> ><a href="index.php?page=medicos"><i class="fa fa-circle-o"></i> Todos os médicos</a></li>
+          <li <?php if ($page == "cadastro_medico") { ?> class="active" <?php } ?> ><a href="index.php?page=cadastro_medico"><i class="fa fa-circle-o"></i> Cadastro de médico</a></li>
         </ul>
       </li>
       <li class="treeview">

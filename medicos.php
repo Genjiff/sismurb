@@ -1,6 +1,6 @@
 <?php
     include_once("util/connect.php");
-    $stmt = $conn->prepare("SELECT pessoa.id, pessoa.nome, pessoa.data_nasc, paciente.id_pessoa, paciente.nome_da_mae FROM pessoa, paciente WHERE pessoa.id=paciente.id_pessoa");
+    $stmt = $conn->prepare("SELECT pessoa.id, pessoa.nome, medico.id_pessoa, medico.especialidade, medico.crm FROM pessoa, medico WHERE pessoa.id=medico.id_pessoa");
     $stmt->execute();
 
     $res = $stmt->get_result();
@@ -12,11 +12,11 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Lista de Pacientes
+    Lista de Médicos
   </h1>
   <ol class="breadcrumb">
     <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Lista de Pacientes</li>
+    <li class="active">Lista de Médicos</li>
   </ol>
 </section>
 
@@ -27,30 +27,30 @@
         <div class="col-xs-9">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Lista de Pacientes</h3>
+                    <h3 class="box-title">Lista de Médicos</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="listadepacientes" class="table table-bordered table-striped">
+                    <table id="listademedicos" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Data de Nascimento</th>
-                                <th>Nome da Mãe</th>
+                                <th>Especialidade</th>
+                                <th>Número do CRM</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while ($paciente = $res->fetch_assoc()) {?>
+                            <?php while ($medico = $res->fetch_assoc()) {?>
                                 <tr>
-                                    <td><a href="index.php?page=ver_paciente&id=<?php echo $paciente["id"] ?>"><?php echo $paciente["nome"] ?></td>
-                                    <td><?php echo date("d/m/Y", strtotime($paciente["data_nasc"])) ?></td>
-                                    <td><?php echo $paciente["nome_da_mae"] ?></td>
+                                    <td><a href="index.php?page=ver_medico&id=<?php echo $medico["id"] ?>"><?php echo $medico["nome"] ?></td>
+                                    <td><?php echo $medico["especialidade"] ?></td>
+                                    <td><?php echo $medico["crm"] ?></td>
                                     <td>
-                                        <a href="index.php?page=editar_paciente&id=<?php echo $paciente["id"] ?>" style="padding: 2px 8px;" class="btn btn-success" title="Editar Paciente">
+                                        <a href="index.php?page=editar_medico&id=<?php echo $medico["id"] ?>" style="padding: 2px 8px;" class="btn btn-success" title="Editar médico">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a href="excluir_pessoa.php?id=<?php echo $paciente["id"] ?>&return_page=pacientes" style="padding: 2px 8px;" class="excluir btn btn-danger" title="Excluir Paciente">
+                                        <a href="excluir_pessoa.php?id=<?php echo $medico["id"] ?>&return_page=medicos" style="padding: 2px 8px;" class="excluir btn btn-danger" title="Excluir médico">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </td>
@@ -59,8 +59,8 @@
                         <tfoot>
                             <tr>
                                 <th>Nome</th>
-                                <th>Data de Nascimento</th>
-                                <th>Nome da Mãe</th>
+                                <th>Especialidade</th>
+                                <th>Número do CRM</th>
                                 <th>Opções</th>
                             </tr>
                         </tfoot>
@@ -80,11 +80,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"><i class="fa fa-plus"></i> Excluir paciente</h4>
+                <h4 class="modal-title"><i class="fa fa-plus"></i> Excluir médico</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <p style="font-size:18px" id="msg_error">Tem certeza que deseja excluir este paciente?</p>
+                    <p style="font-size:18px" id="msg_error">Tem certeza que deseja excluir este médico?</p>
                 </div>
             </div>
             <div class="modal-footer clearfix">

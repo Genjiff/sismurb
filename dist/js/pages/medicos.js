@@ -1,7 +1,7 @@
 $(function () {
-    $('#listadepacientes').DataTable({"language": {
+    $('#listademedicos').DataTable({"language": {
         "lengthMenu": "Mostrar _MENU_ por página",
-        "zeroRecords": "Nenhum paciente encontrado",
+        "zeroRecords": "Nenhum médico encontrado",
         "info": "Página _PAGE_ de _PAGES_",
         "infoEmpty": "Nenhuma informação disponível",
         "infoFiltered": "(Filtrando de _MAX_ registros)",
