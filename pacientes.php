@@ -37,6 +37,7 @@
                                 <th>Nome</th>
                                 <th>Data de Nascimento</th>
                                 <th>Nome da Mãe</th>
+                                <th>Opções</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,6 +46,14 @@
                                     <td><a href="index.php?page=ver_paciente&id=<?php echo $paciente["id"] ?>"><?php echo $paciente["nome"] ?></td>
                                     <td><?php echo date("d/m/Y", strtotime($paciente["data_nasc"])) ?></td>
                                     <td><?php echo $paciente["nome_da_mae"] ?></td>
+                                    <td>
+                                        <a href="index.php?page=editar_paciente&id=<?php echo $paciente["id"] ?>" style="padding: 2px 8px;" class="btn btn-success" title="Editar Paciente">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a href="excluir_paciente.php?id=<?php echo $paciente["id"] ?>" style="padding: 2px 8px;" class="btn btn-danger" title="Excluir Paciente">
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
+                                    </td>
                             <?php } ?>
                         </tbody>
                         <tfoot>
@@ -52,6 +61,7 @@
                                 <th>Nome</th>
                                 <th>Data de Nascimento</th>
                                 <th>Tipo</th>
+                                <th>Opções</th>
                             </tr>
                         </tfoot>
                     </table>
