@@ -1,7 +1,6 @@
 <?php
     include_once("util/connect.php");
-
-    $stmt = $conn->prepare("SELECT id, nome, data_nasc, tipo FROM paciente");
+    $stmt = $conn->prepare("SELECT pessoa.id, pessoa.nome, pessoa.data_nasc, paciente.id_pessoa, paciente.nome_da_mae FROM pessoa, paciente WHERE pessoa.id=paciente.id_pessoa");
     $stmt->execute();
 
     $res = $stmt->get_result();
@@ -16,7 +15,7 @@
     Lista de Pacientes
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
     <li class="active">Lista de Pacientes</li>
   </ol>
 </section>
@@ -37,7 +36,7 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Data de Nascimento</th>
-                                <th>Tipo</th>
+                                <th>Nome da Mãe</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +44,7 @@
                                 <tr>
                                     <td><a href="index.php?page=ver_paciente&id=<?php echo $paciente["id"] ?>"><?php echo $paciente["nome"] ?></td>
                                     <td><?php echo date("d/m/Y", strtotime($paciente["data_nasc"])) ?></td>
-                                    <td><?php echo $paciente["tipo"] ?></td>
+                                    <td><?php echo $paciente["nome_da_mae"] ?></td>
                             <?php } ?>
                         </tbody>
                         <tfoot>
