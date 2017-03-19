@@ -16,8 +16,17 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">MENU PRINCIPAL</li>
-      <li <?php if ($page == "home") { ?> class="active" <?php } ?> >
-        <a href="index.php"><i class="fa fa-hospital-o"></i> Dashboard</a>
+      <li class="treeview <?php if ($page == "home" || $page == "consultas" || $page == "marcar_consulta") { ?>active<?php } ?>">
+        <a href="#">
+          <i class="fa fa-hospital-o"></i> <span>Consultas</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li <?php if ($page == "consultas" || $page == "home") { ?> class="active" <?php } ?> ><a href="index.php?page=consultas"><i class="fa fa-circle-o"></i> Consultas marcadas</a></li>
+          <li <?php if ($page == "marcar_consulta") { ?> class="active" <?php } ?> ><a href="index.php?page=marcar_consulta"><i class="fa fa-circle-o"></i> Marcar consulta</a></li>
+        </ul>
       </li>
       <li class="treeview <?php if ($page == "cadastro_paciente" || $page == "pacientes" || $page == "editar_paciente" || $page == "ver_paciente" ) { ?>active<?php } ?>">
         <a href="#">
