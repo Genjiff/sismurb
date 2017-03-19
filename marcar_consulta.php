@@ -7,7 +7,7 @@
     $pacientes = $stmt->get_result();
     $stmt->close();
 
-    $stmt = $conn->prepare("SELECT pessoa.id, pessoa.nome, medico.especialidade, medico.id_pessoa FROM pessoa, medico WHERE pessoa.id = medico.id_pessoa");
+    $stmt = $conn->prepare("SELECT pessoa.id, pessoa.nome, medico.especialidade, medico.id_pessoa FROM pessoa, medico WHERE pessoa.id = medico.id_pessoa ORDER BY medico.especialidade ASC");
     $stmt->execute();
 
     $medicos = $stmt->get_result();
