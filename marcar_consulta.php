@@ -27,7 +27,7 @@
         }
 
         //Checa se médico já possui consulta no horário
-        if ($_POST["data"] != "" || $_POST["horarioinicio"] != "" || $_POST["horariofim"] != "" || $_POST["medico"] != "") {
+        if ($_POST["data"] != "" && $_POST["horarioinicio"] != "" && $_POST["horariofim"] != "" && $_POST["medico"] != "") {
             $stmt = $conn->prepare("SELECT data, horario_inicio, horario_fim FROM consulta WHERE medico = ?");
 
             $stmt->bind_param("i", $_POST["medico"]);
@@ -43,7 +43,8 @@
             while ($aux = $res->fetch_assoc()) {
                 $checkInicio = new DateTime($aux['data'] . " " . $aux['horario_inicio']);
                 $checkFim = new DateTime($aux['data'] . " " . $aux['horario_fim']);
-                if (($objHorarioInicio >= $checkInicio && $objHorarioInicio <= $checkFim) || ($objHorarioFim >= $checkInicio && $objHorarioFim <= $checkFim)) {
+
+                if (($objHorarioInicio >= $checkInicio && $objHorarioInicio <= $checkFim) || ($objHorarioFim >= $checkInicio && $objHorarioFim <= $checkFim) || ($objHorarioInicio <= $checkInicio && $objHorarioFim >= $checkFim)) {
                     $error_fields[] = "medico";
                     $error_msg .= "Médico já possui consulta nesse horário";
                     break;
@@ -152,41 +153,3 @@
     <!-- /.box -->
 </section>
 <!-- /.content -->
-
-<!-- MODAL ERRO -->
-<div class="modal modal-danger fade" id="erro" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"><i class="fa fa-plus"></i> Marcação de consulta</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <p style="font-size:18px" id="msg_error"></p>
-                </div>
-            </div>
-            <div class="modal-footer clearfix">
-                <button type="button" class="btn btn-outline pull-right" data-dismiss="modal"><i class="fa fa-check"></i> OK</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- MODAL SUCESSO -->
-<div class="modal modal-success fade" id="sucesso" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"><i class="fa fa-edit"></i> Marcação de consulta</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <p style="font-size:18px">Consulta marcada com sucesso</p>
-                </div>
-            </div>
-            <div class="modal-footer clearfix">
-                <button type="button" class="btn btn-outline pull-right" data-dismiss="modal"><i class="fa fa-check"></i> OK</button>
-            </div>
-        </div>
-    </div>
-</div>

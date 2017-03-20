@@ -30,8 +30,6 @@
     }
 
     if (isset($_POST["submit"])) {
-        include_once("util/connect.php");
-
         //checa há campos vazios
         foreach ($_POST as $key => $value) {
             if ($value == "" && $key != "submit") {

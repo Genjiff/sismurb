@@ -87,7 +87,8 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a href="index.php?page=editar_paciente&id=<?php echo $paciente["id"] ?>"><button id="submit" class="btn btn-primary">Editar</button></a>
+                    <a href="index.php?page=editar_paciente&id=<?php echo $paciente["id"] ?>"><button class="btn btn-success">Editar</button></a>
+                    <a href="index.php?page=excluir_pessoa&id=<?php echo $paciente["id"] ?>"><button class="btn btn-danger">Excluir</button></a>
                 </div>
             </div>
         </div>

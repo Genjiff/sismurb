@@ -49,7 +49,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="listadepacientes" class="table table-bordered table-striped">
+                    <table id="listadeconsultas" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>Paciente</th>
@@ -57,6 +57,7 @@
                                 <th>Horário de Início</th>
                                 <th>Horário de Término</th>
                                 <th>Médico Responsável</th>
+                                <th>Opções</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,6 +85,7 @@
                                 <th>Horário de Início</th>
                                 <th>Horário de Término</th>
                                 <th>Médico Responsável</th>
+                                <th>Opções</th>
                             </tr>
                         </tfoot>
                     </table>

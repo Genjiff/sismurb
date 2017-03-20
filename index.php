@@ -136,7 +136,7 @@ if(!isset($_GET["page"]) || $_GET["page"] == ""){
 <script src="dist/js/demo.js"></script>
 <script>
 <?php
-    include_once("dist/js/pages/$page.js");
+    include("dist/js/pages/$page.js");
 ?>
 </script>
 </body>
