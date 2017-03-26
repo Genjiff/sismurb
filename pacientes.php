@@ -1,6 +1,6 @@
 <?php
     include_once("util/connect.php");
-    $stmt = $conn->prepare("SELECT pessoa.id, pessoa.nome, pessoa.data_nasc, paciente.id_pessoa, paciente.nome_da_mae FROM pessoa, paciente WHERE pessoa.id=paciente.id_pessoa");
+    $stmt = $conn->prepare("SELECT * FROM pacientes_view");
     $stmt->execute();
 
     $res = $stmt->get_result();

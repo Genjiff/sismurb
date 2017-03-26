@@ -1,24 +1,25 @@
 <?php
+
+    // SELECT
+    //     consulta.id,
+    //     consulta.paciente as IdPaciente,
+    //     consulta.medico as IdMedico,
+    //     consulta.data,
+    //     consulta.horario_inicio,
+    //     consulta.horario_fim,
+    //     medico.especialidade,
+    //     pp.nome as NomePaciente,
+    //     dp.nome as NomeMedico
+    //     FROM consulta
+    //     INNER JOIN medico
+    //     ON consulta.medico = medico.id_pessoa
+    //     INNER JOIN pessoa dp
+    //     ON consulta.medico = dp.id
+    //     inner join pessoa pp
+	//     ON consulta.paciente = pp.id
+
     include_once("util/connect.php");
-    $stmt = $conn->prepare("SELECT
-        consulta.id,
-        paciente.id_pessoa as IdPaciente,
-        pp.nome as NomePaciente,
-        consulta.data,
-        consulta.horario_inicio,
-        consulta.horario_fim,
-        dp.nome as NomeMedico,
-        medico.id_pessoa as IdMedico,
-        medico.especialidade
-        FROM consulta
-        INNER JOIN medico
-        ON consulta.medico = medico.id_pessoa
-        INNER JOIN pessoa dp
-        ON consulta.medico = dp.id
-        inner join paciente
-	    ON consulta.paciente = paciente.id_pessoa
-        inner join pessoa pp
-	    ON consulta.paciente = pp.id");
+    $stmt = $conn->prepare("SELECT * FROM consultas_view");
     $stmt->execute();
 
     $res = $stmt->get_result();

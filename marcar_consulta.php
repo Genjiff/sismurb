@@ -153,3 +153,41 @@
     <!-- /.box -->
 </section>
 <!-- /.content -->
+
+<!-- MODAL ERRO -->
+<div class="modal modal-danger fade" id="erro" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fa fa-plus"></i> Marcação de consulta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <p style="font-size:18px" id="msg_error"></p>
+                </div>
+            </div>
+            <div class="modal-footer clearfix">
+                <button type="button" class="btn btn-outline pull-right" data-dismiss="modal"><i class="fa fa-check"></i> OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL SUCESSO -->
+<div class="modal modal-success fade" id="sucesso" tabindex="-1" role="dialog" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><i class="fa fa-edit"></i> Marcação de consulta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <p style="font-size:18px">Consulta marcada com sucesso</p>
+                </div>
+            </div>
+            <div class="modal-footer clearfix">
+                <button type="button" class="btn btn-outline pull-right" data-dismiss="modal"><i class="fa fa-check"></i> OK</button>
+            </div>
+        </div>
+    </div>
+</div>
